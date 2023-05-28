@@ -37,7 +37,9 @@
                         <td class="text-center"><?php echo $article->getCategory_name()?></td>
                         <td class="text-center">
                             <a class="btn btn-warning text-center"href="index.php?controller=article&action=edit&id=<?php echo $article->getId()?>">Edit</a>
-                            <a class="btn btn-danger text-center" href="index.php?controller=article&action=del&id=<?php echo $article->getId()?>">Del</a>
+                            <a class="btn btn-danger text-center" href="index.php?controller=article&action=del&id=<?php echo $article->getId()?>"
+                            onclick="return confirm('Are you sure want to delete?')"
+                            >Del</a>
                         </td>
                     </tr>
                 <?php $count++;} ?>
