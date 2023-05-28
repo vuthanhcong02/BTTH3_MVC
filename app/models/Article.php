@@ -1,5 +1,5 @@
 <?php
-require_once 'database/Connect.php';
+require_once 'database/DBConnect.php';
 class Article{
     private $id;
     private $title;

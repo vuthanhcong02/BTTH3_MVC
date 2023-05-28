@@ -1,5 +1,5 @@
 <?php
-require_once 'database/Connect.php';
+require_once 'database/DBConnect.php';
 class Category{
     private $id;
     private $name;

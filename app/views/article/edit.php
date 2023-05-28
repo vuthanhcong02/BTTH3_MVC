@@ -17,22 +17,22 @@
     <form action="index.php?controller=article&action=update" method="post">
       <div class="mb-3">
         <label for="" class="form-label">Title</label>
-        <input type="text" class="form-control" name="title" value="<?php echo $article['title']?> ">
-        <input type="hidden" class="form-control" name="id" value="<?php echo $article['id']?> ">
+        <input type="text" class="form-control" name="title" value="<?php echo $article[0]->getTitle()?> ">
+        <input type="hidden" class="form-control" name="id" value="<?php echo $article[0]->getId()?> ">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Summary</label>
-        <input type="text" class="form-control" name="summary" value="<?php echo $article['summary']?>">
+        <input type="text" class="form-control" name="summary" value="<?php echo $article[0]->getSummary()?>">
       </div>
       <div class="mb-3">
         <label class="form-label" for="">Category</label>
-        <select class="form-select" aria-label="Default select example" name="category_id" value="<?php echo $article['category_id']?>">
+        <select class="form-select" aria-label="Default select example" name="category_id" value="<?php echo $article[0]->getCategory_id()?>">
           <option selected>Open this select menu</option>
           <?php foreach ($categories as $category) {?>
-            <?php if ($category['id'] == $article['category_id']) {
-                echo '<option value="'. $category['id'].'" selected>'. $category['name'].'</option>';
+            <?php if ($category->getId() == $article[0]->getCategory_id()) {
+                echo '<option value="'. $category->getId().'" selected>'. $category->getName().'</option>';
              }else{
-                echo '<option value="'. $category['id'].'">'. $category['name'].'</option>';
+                echo '<option value="'. $category->getId().'">'. $category->getName().'</option>';
 
              } ?>
           <?php } ?>
@@ -40,6 +40,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Add</button>
     </form>
+
   </div>
 
   <!-- Optional JavaScript; choose one of the two! -->

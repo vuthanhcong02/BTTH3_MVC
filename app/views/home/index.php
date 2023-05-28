@@ -28,9 +28,10 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $count =1;?>
                 <?php foreach ($articles as $article) { ?>
                     <tr>
-                        <th scope="row" class="text-center">1</th>
+                        <th scope="row" class="text-center"><?php echo $count ?></th>
                         <td><?php echo $article->getTitle() ?></td>
                         <td><?php echo $article->getSummary() ?></td>
                         <td class="text-center"><?php echo $article->getCategory_name()?></td>
@@ -39,7 +40,7 @@
                             <a class="btn btn-danger text-center" href="index.php?controller=article&action=del&id=<?php echo $article->getId()?>">Del</a>
                         </td>
                     </tr>
-                <?php } ?>
+                <?php $count++;} ?>
             </tbody>
         </table>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +65,7 @@
                                 <select class="form-select" aria-label="Default select example" name="category_id">
                                     <option selected>Open this select menu</option>
                                     <?php foreach($categories as $category){?>
-                                    <option value="<?php echo $category['id']?>"><?php echo $category['name']?></option>
+                                    <option value="<?php echo $category->getId()?>"><?php echo $category->getName()?></option>
                                     <?php } ?>
                                 </select>
                             </div>

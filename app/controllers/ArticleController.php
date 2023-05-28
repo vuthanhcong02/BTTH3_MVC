@@ -1,6 +1,8 @@
 <?php
 require_once 'app/services/ArticleService.php';
 require_once 'app/services/CategoryService.php';
+require_once 'app/models/Article.php';
+require_once 'app/models/Category.php';
 class ArticleController{
     public function index(){
         $articleService = new ArticleService();
@@ -27,7 +29,7 @@ class ArticleController{
         $article = $articleService->editArticle($id);
         $categoryService =new CategoryService();
         $categories = $categoryService->getAllCategory();
-        include 'app/views/article/edit_article.php';
+        include 'app/views/article/edit.php';
     }
     public function update(){
         $id=$_POST['id'];

@@ -6,8 +6,13 @@ class CategoryService{
         $conn = $database->getConnection();
         if($conn){
             $sql="SELECT id,name FROM category";
-            $categories = $database->pdo($sql)->fetchAll();
-            return $categories;
+            $stmt = $database->pdo($sql);
+            $categories=[]; 
+            while($row=$stmt->fetch()){
+                $category = new Category($row['id'],$row['name']);
+                $categories[] = $category;
+            }    
         }
+        return $categories;
     }
 }

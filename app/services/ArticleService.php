@@ -40,22 +40,30 @@ class ArticleService{
         }
        
     }
-    public function editArticle($id){
+    public function editArticle($id)
+    {
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
-        if($conn){
+        if ($conn) {
             $sql = "SELECT 
-            article.id,
-            article.title,
-            article.summary,
-            article.category_id,
-            category.name as name
-            FROM article INNER JOIN category ON article.category_id=category.id WHERE article.id=:id";
-            $article = $database->pdo($sql,['id'=>$id])->fetch();
+                article.id,
+                article.title,
+                article.summary,
+                article.category_id,
+                category.name as name
+                FROM article INNER JOIN category ON article.category_id=category.id WHERE article.id=:id";
+            $stmt = $database->pdo($sql, ['id' => $id]);
+            $article = []; // Mảng để lưu các đối tượng Article
+    
+            if ($row = $stmt->fetch()) {
+                $temp = new Article($row['id'], $row['title'], $row['summary'], $row['category_id'], $row['name']);
+                $article[] = $temp;
+            }
+            
             return $article;
         }
-       
     }
+    
     public function updateArticle($id,$title,$summary,$category_id){
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
